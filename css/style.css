@@ -451,6 +451,71 @@ section {
   cursor: default;
 }
 
+/* ── SIZE SELECTOR ──────────────────────────────────────── */
+.size-select {
+  background: transparent;
+  border: 1px solid var(--crimson-mid);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c41e3a'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 24px;
+}
+.size-select:focus { outline: none; border-color: var(--gold-bright); }
+.size-select option { background: #111; color: var(--white); }
+
+.product-add.buy {
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+  cursor: pointer;
+  min-width: 80px;
+}
+.product-add.buy:hover {
+  background: var(--gold-bright);
+  color: #080808;
+  border-color: var(--gold-bright);
+}
+.product-add.buy:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Toast notification */
+.tenbjj-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1a1a1a;
+  border: 1px solid var(--gold-bright);
+  color: var(--gold-bright);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.tenbjj-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ── CATEGORIES STRIP ───────────────────────────────────── */
 .categories {
   padding: 3rem 2rem;

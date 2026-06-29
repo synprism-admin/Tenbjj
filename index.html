@@ -136,62 +136,72 @@
 
     <div class="products-grid" id="products-grid">
 
-      <!-- PRODUCT 1, Oni Mask Tee (Coming Soon) -->
+      <!-- PRODUCT 1 — D1 Tee (LIVE) -->
       <div class="product-card fade-up" data-cat="shirts">
         <div class="product-img-wrap">
-          <div class="product-placeholder">
-            <span class="product-placeholder-icon">👕</span>
-            <span class="product-placeholder-label">Oni Mask Tee</span>
-          </div>
-          <div class="product-coming-soon">Coming Soon</div>
+          <img src="https://files.cdn.printful.com/files/5a8/5a8874323f3ad596ff2878ca87acb2c8_preview.png" alt="TENBJJ Design 1 Tee" loading="lazy">
         </div>
         <div class="product-info">
           <p class="product-category">Shirts</p>
-          <h3 class="product-name">Oni Mask Tee</h3>
+          <h3 class="product-name">Design 1 Tee</h3>
           <p class="product-desc">Classic cut, heavyweight cotton. The mask that started it all, front print on black.</p>
           <div class="product-footer">
-            <span class="product-price tbd">Pricing TBD</span>
-            <button class="product-add notify">Notify Me</button>
+            <span class="product-price">$27.43</span>
+            <select class="size-select" id="size-d1" aria-label="Select size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="2XL">2XL — $30.03</option>
+            </select>
+            <button class="product-add buy" onclick="checkout('d1', this)">Buy</button>
           </div>
         </div>
       </div>
 
-      <!-- PRODUCT 2, Tennessee State Tee -->
+      <!-- PRODUCT 2 — D2 Tee (LIVE) -->
       <div class="product-card fade-up" data-cat="shirts">
         <div class="product-img-wrap">
-          <div class="product-placeholder">
-            <span class="product-placeholder-icon">👕</span>
-            <span class="product-placeholder-label">State Outline Tee</span>
-          </div>
-          <div class="product-coming-soon">Coming Soon</div>
+          <img src="https://files.cdn.printful.com/files/5a8/5a8874323f3ad596ff2878ca87acb2c8_preview.png" alt="TENBJJ Design 2 Tee" loading="lazy">
         </div>
         <div class="product-info">
           <p class="product-category">Shirts</p>
-          <h3 class="product-name">State Outline Tee</h3>
-          <p class="product-desc">Gold Tennessee outline on black, subtle enough for the street, bold enough for the gym.</p>
+          <h3 class="product-name">Design 2 Tee</h3>
+          <p class="product-desc">Bold Tennessee print on black, subtle enough for the street, bold enough for the gym.</p>
           <div class="product-footer">
-            <span class="product-price tbd">Pricing TBD</span>
-            <button class="product-add notify">Notify Me</button>
+            <span class="product-price">$27.43</span>
+            <select class="size-select" id="size-d2" aria-label="Select size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="2XL">2XL — $30.03</option>
+            </select>
+            <button class="product-add buy" onclick="checkout('d2', this)">Buy</button>
           </div>
         </div>
       </div>
 
-      <!-- PRODUCT 3, Oni Snapback -->
-      <div class="product-card fade-up" data-cat="hats">
+      <!-- PRODUCT 3 — D3 Tee (LIVE) -->
+      <div class="product-card fade-up" data-cat="shirts">
         <div class="product-img-wrap">
-          <div class="product-placeholder">
-            <span class="product-placeholder-icon">🧢</span>
-            <span class="product-placeholder-label">Oni Snapback</span>
-          </div>
-          <div class="product-coming-soon">Coming Soon</div>
+          <img src="https://files.cdn.printful.com/files/5a8/5a8874323f3ad596ff2878ca87acb2c8_preview.png" alt="TENBJJ Design 3 Tee" loading="lazy">
+          <div class="product-badge">Limited</div>
         </div>
         <div class="product-info">
-          <p class="product-category">Hats</p>
-          <h3 class="product-name">Oni Snapback</h3>
-          <p class="product-desc">Black structured snapback. Embroidered oni mask logo in crimson and gold.</p>
+          <p class="product-category">Shirts</p>
+          <h3 class="product-name">Design 3 Tee</h3>
+          <p class="product-desc">Limited edition drop. Premium heavyweight cotton, front print on black.</p>
           <div class="product-footer">
-            <span class="product-price tbd">Pricing TBD</span>
-            <button class="product-add notify">Notify Me</button>
+            <span class="product-price">$27.43</span>
+            <select class="size-select" id="size-d3" aria-label="Select size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="2XL">2XL — $30.03</option>
+            </select>
+            <button class="product-add buy" onclick="checkout('d3', this)">Buy</button>
           </div>
         </div>
       </div>
@@ -367,5 +377,52 @@
   </footer>
 
   <script src="/js/main.js"></script>
+
+  <!-- ── TENBJJ Checkout ───────────────────────────── -->
+  <div class="tenbjj-toast" id="tenbjj-toast"></div>
+  <script>
+    const API = 'https://api.tenbjj.com';
+
+    function showToast(msg, duration) {
+      const t = document.getElementById('tenbjj-toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), duration || 3500);
+    }
+
+    async function checkout(productId, btn) {
+      const sizeEl = document.getElementById('size-' + productId);
+      const size = sizeEl ? sizeEl.value : 'M';
+
+      // Disable button while processing
+      btn.disabled = true;
+      btn.textContent = '...';
+
+      try {
+        const res = await fetch(API + '/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product_id: productId, size: size }),
+        });
+
+        const data = await res.json();
+
+        if (data.url) {
+          // Redirect to Stripe Checkout
+          window.location.href = data.url;
+        } else {
+          console.error('Checkout error:', data);
+          showToast('Something went wrong. Please try again.', 4000);
+          btn.disabled = false;
+          btn.textContent = 'Buy';
+        }
+      } catch (err) {
+        console.error('Network error:', err);
+        showToast('Connection error. Please try again.', 4000);
+        btn.disabled = false;
+        btn.textContent = 'Buy';
+      }
+    }
+  </script>
 </body>
 </html>
