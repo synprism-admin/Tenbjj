@@ -226,34 +226,42 @@
       <div class="section-rule"></div>
     </div>
 
-    <div class="band-label fade-up">
-      <span class="band-line"></span>
-      <span class="band-text band-live">Available Now</span>
-      <span class="band-line"></span>
+    <!-- Category filter -->
+    <div class="cat-filter fade-up">
+      <button class="cat-pill active" data-cat="all" onclick="filterCat(this)">All</button>
+      <button class="cat-pill" data-cat="shirts" onclick="filterCat(this)">Shirts</button>
+      <button class="cat-pill" data-cat="rg" onclick="filterCat(this)">Rash Guards</button>
     </div>
 
-    <!-- Countdown urgency bar -->
-    <div class="urgency-bar fade-up" id="urgency-bar">
+    <!-- New drop countdown (applies to ns1-ns3 + rg1-rg5) -->
+    <div class="urgency-bar urgency-bar-new fade-up" id="new-drop-bar">
       <div class="urgency-inner">
         <p class="urgency-headline">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline;vertical-align:-2px;margin-right:6px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          This drop closes <strong>July 15</strong>, once they're gone, they're gone.
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline;vertical-align:-2px;margin-right:6px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          New drop &mdash; available for <strong>14 days only</strong>. Closes July 20.
         </p>
-        <div class="urgency-countdown" id="countdown">
-          <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+        <div class="urgency-countdown" id="new-drop-countdown">
+          <div class="countdown-unit"><span class="countdown-num" id="nd-days">--</span><span class="countdown-label">Days</span></div>
           <div class="countdown-sep">:</div>
-          <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="nd-hours">--</span><span class="countdown-label">Hours</span></div>
           <div class="countdown-sep">:</div>
-          <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="nd-mins">--</span><span class="countdown-label">Min</span></div>
           <div class="countdown-sep">:</div>
-          <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Sec</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="nd-secs">--</span><span class="countdown-label">Sec</span></div>
         </div>
       </div>
     </div>
 
-    <div class="products-grid">
+    <!-- ── SHIRTS ──────────────────────────────────────────── -->
+    <div class="band-label fade-up" id="label-shirts">
+      <span class="band-line"></span>
+      <span class="band-text band-live">Shirts</span>
+      <span class="band-line"></span>
+    </div>
 
-      <!-- PRODUCT 1 — D1 Tee -->
+    <div class="products-grid" id="grid-shirts">
+
+      <!-- D1 — Crimson Oni Tee -->
       <article class="product-card fade-up" data-product="d1" data-selected-size="M">
         <div class="product-img-wrap d3-img-wrap" id="d1-wrap">
           <img src="/assets/images/d1/back-flat.jpg" alt="TENBJJ Crimson Oni Tee, Flat View" loading="lazy" class="d3-img active" id="d1-flat">
@@ -284,7 +292,7 @@
         </div>
       </article>
 
-      <!-- PRODUCT 2 — D2 Tee -->
+      <!-- D2 — Oni Scroll Tee -->
       <article class="product-card fade-up" data-product="d2" data-selected-size="M">
         <div class="product-img-wrap d3-img-wrap" id="d2-wrap">
           <img src="/assets/images/d2/back-worn.jpg" alt="TENBJJ Oni Scroll Tee, Back" loading="lazy" class="d3-img active" id="d2-back">
@@ -315,7 +323,7 @@
         </div>
       </article>
 
-      <!-- PRODUCT 3 — D3 Tee -->
+      <!-- D3 — Oni Mech Tee -->
       <article class="product-card fade-up" data-product="d3" data-selected-size="M">
         <div class="product-img-wrap d3-img-wrap" id="d3-wrap">
           <img src="/assets/images/d3/back-flat.jpg" alt="TENBJJ Oni Mech Tee, Back" loading="lazy" class="d3-img active" id="d3-back">
@@ -347,7 +355,7 @@
         </div>
       </article>
 
-      <!-- PRODUCT 4 — D4 Tee -->
+      <!-- D4 — Samurai Blossom Tee -->
       <article class="product-card fade-up" data-product="d4" data-selected-size="M">
         <div class="product-img-wrap d3-img-wrap" id="d4-wrap">
           <img src="/assets/images/d4/back-flat.jpg" alt="TENBJJ Samurai Blossom Tee, Back" loading="lazy" class="d3-img active" id="d4-back">
@@ -375,6 +383,299 @@
             </div>
           </div>
           <button class="add-to-cart-btn" onclick="addToCart('d4', this)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- NS1 — Oni Flame Tee (New Drop) -->
+      <article class="product-card fade-up new-drop-card" data-product="ns1" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="ns1-wrap">
+          <img src="/assets/images/ns1/back-worn.jpg" alt="TENBJJ Oni Flame Tee, Back" loading="lazy" class="d3-img active" id="ns1-back">
+          <img src="/assets/images/ns1/front-worn.jpg" alt="TENBJJ Oni Flame Tee, Front" loading="lazy" class="d3-img" id="ns1-front">
+          <span class="product-badge product-badge-new">New</span>
+          <div class="d3-toggle" aria-label="Toggle front/back view">
+            <button class="d3-toggle-btn active" onclick="imgToggle('ns1',['back','front'],'back')" data-view="back">Back</button>
+            <button class="d3-toggle-btn" onclick="imgToggle('ns1',['back','front'],'front')" data-view="front">Front</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Shirts</p>
+          <h3 class="product-name">Oni Flame Tee</h3>
+          <p class="product-desc">Premium heavyweight cotton. Full back-print oni in a blaze of crimson flames with kanji script. TENBJJ TN chest logo on front.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-ns1">$28.00</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="S"   data-price="28.00" onclick="selectSize(this,'ns1')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="28.00" onclick="selectSize(this,'ns1')">M</button>
+              <button class="size-pill" data-size="L"   data-price="28.00" onclick="selectSize(this,'ns1')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="28.00" onclick="selectSize(this,'ns1')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="30.00" onclick="selectSize(this,'ns1')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="32.50" onclick="selectSize(this,'ns1')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="34.00" onclick="selectSize(this,'ns1')">4XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('ns1', this)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- NS2 — Dual Oni Tee (New Drop) -->
+      <article class="product-card fade-up new-drop-card" data-product="ns2" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="ns2-wrap">
+          <img src="/assets/images/ns2/back-worn.jpg" alt="TENBJJ Dual Oni Tee, Back" loading="lazy" class="d3-img active" id="ns2-back">
+          <span class="product-badge product-badge-new">New</span>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Shirts</p>
+          <h3 class="product-name">Dual Oni Tee</h3>
+          <p class="product-desc">Premium heavyweight cotton. Two oni masks face off over a red kanji emblem on the back. TENBJJ TN chest logo on front.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-ns2">$27.50</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="S"   data-price="27.50" onclick="selectSize(this,'ns2')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="27.50" onclick="selectSize(this,'ns2')">M</button>
+              <button class="size-pill" data-size="L"   data-price="27.50" onclick="selectSize(this,'ns2')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="27.50" onclick="selectSize(this,'ns2')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="29.50" onclick="selectSize(this,'ns2')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="31.50" onclick="selectSize(this,'ns2')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="33.00" onclick="selectSize(this,'ns2')">4XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('ns2', this)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- NS3 — Oni Blossom Tee (New Drop) -->
+      <article class="product-card fade-up new-drop-card" data-product="ns3" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="ns3-wrap">
+          <img src="/assets/images/ns3/back-worn.jpg" alt="TENBJJ Oni Blossom Tee, Back" loading="lazy" class="d3-img active" id="ns3-back">
+          <span class="product-badge product-badge-new">New</span>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Shirts</p>
+          <h3 class="product-name">Oni Blossom Tee</h3>
+          <p class="product-desc">Premium heavyweight cotton. Grinning oni mask framed in cherry blossoms with red eyes and TENBJJ script below. Subtle chest logo on front.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-ns3">$27.50</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="S"   data-price="27.50" onclick="selectSize(this,'ns3')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="27.50" onclick="selectSize(this,'ns3')">M</button>
+              <button class="size-pill" data-size="L"   data-price="27.50" onclick="selectSize(this,'ns3')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="27.50" onclick="selectSize(this,'ns3')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="29.50" onclick="selectSize(this,'ns3')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="31.00" onclick="selectSize(this,'ns3')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="34.00" onclick="selectSize(this,'ns3')">4XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('ns3', this)">Add to Cart</button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ── RASH GUARDS ─────────────────────────────────────── -->
+    <div class="band-label band-label-lower fade-up" id="label-rg">
+      <span class="band-line"></span>
+      <span class="band-text band-live">Rash Guards</span>
+      <span class="band-line"></span>
+    </div>
+
+    <div class="products-grid" id="grid-rg">
+
+      <!-- RG1 — Oni Shadow Rash Guard -->
+      <article class="product-card fade-up new-drop-card" data-product="rg1" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="rg1-wrap">
+          <img src="/assets/images/rg1/front-worn.jpg" alt="TENBJJ Oni Shadow Rash Guard, Front" loading="lazy" class="d3-img active" id="rg1-front">
+          <img src="/assets/images/rg1/back-worn.jpg" alt="TENBJJ Oni Shadow Rash Guard, Back" loading="lazy" class="d3-img" id="rg1-back">
+          <span class="product-badge product-badge-new">New</span>
+          <div class="d3-toggle" aria-label="Toggle front/back view">
+            <button class="d3-toggle-btn active" onclick="imgToggle('rg1',['front','back'],'front')" data-view="front">Front</button>
+            <button class="d3-toggle-btn" onclick="imgToggle('rg1',['front','back'],'back')" data-view="back">Back</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Rash Guards</p>
+          <h3 class="product-name">Oni Shadow Rash Guard</h3>
+          <p class="product-desc">All-over print recycled short sleeve rash guard. Oni face with red eyes on white front, ink slash and blood splatter back. UPF 40+.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-rg1">$37.63</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="2XS" data-price="37.63" onclick="selectSize(this,'rg1')">2XS</button>
+              <button class="size-pill" data-size="XS"  data-price="37.63" onclick="selectSize(this,'rg1')">XS</button>
+              <button class="size-pill" data-size="S"   data-price="37.63" onclick="selectSize(this,'rg1')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="37.63" onclick="selectSize(this,'rg1')">M</button>
+              <button class="size-pill" data-size="L"   data-price="37.63" onclick="selectSize(this,'rg1')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="37.63" onclick="selectSize(this,'rg1')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="39.63" onclick="selectSize(this,'rg1')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="41.63" onclick="selectSize(this,'rg1')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="43.63" onclick="selectSize(this,'rg1')">4XL</button>
+              <button class="size-pill" data-size="5XL" data-price="45.63" onclick="selectSize(this,'rg1')">5XL</button>
+              <button class="size-pill" data-size="6XL" data-price="47.63" onclick="selectSize(this,'rg1')">6XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('rg1', this)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- RG2 — Oni Demon Rash Guard -->
+      <article class="product-card fade-up new-drop-card" data-product="rg2" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="rg2-wrap">
+          <img src="/assets/images/rg2/front-worn.png" alt="TENBJJ Oni Demon Rash Guard, Front" loading="lazy" class="d3-img active" id="rg2-front">
+          <img src="/assets/images/rg2/back-worn.png" alt="TENBJJ Oni Demon Rash Guard, Back" loading="lazy" class="d3-img" id="rg2-back">
+          <span class="product-badge product-badge-new">New</span>
+          <div class="d3-toggle" aria-label="Toggle front/back view">
+            <button class="d3-toggle-btn active" onclick="imgToggle('rg2',['front','back'],'front')" data-view="front">Front</button>
+            <button class="d3-toggle-btn" onclick="imgToggle('rg2',['front','back'],'back')" data-view="back">Back</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Rash Guards</p>
+          <h3 class="product-name">Oni Demon Rash Guard</h3>
+          <p class="product-desc">All-over print recycled short sleeve rash guard. Screaming oni demon face covering the front. Blood splatter side panels. UPF 40+.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-rg2">$37.00</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="2XS" data-price="37.00" onclick="selectSize(this,'rg2')">2XS</button>
+              <button class="size-pill" data-size="XS"  data-price="37.00" onclick="selectSize(this,'rg2')">XS</button>
+              <button class="size-pill" data-size="S"   data-price="37.00" onclick="selectSize(this,'rg2')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="37.00" onclick="selectSize(this,'rg2')">M</button>
+              <button class="size-pill" data-size="L"   data-price="37.00" onclick="selectSize(this,'rg2')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="37.00" onclick="selectSize(this,'rg2')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="39.50" onclick="selectSize(this,'rg2')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="41.50" onclick="selectSize(this,'rg2')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="43.50" onclick="selectSize(this,'rg2')">4XL</button>
+              <button class="size-pill" data-size="5XL" data-price="45.00" onclick="selectSize(this,'rg2')">5XL</button>
+              <button class="size-pill" data-size="6XL" data-price="47.00" onclick="selectSize(this,'rg2')">6XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('rg2', this)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- RG3 — Ink Splatter Rash Guard -->
+      <article class="product-card fade-up new-drop-card" data-product="rg3" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="rg3-wrap">
+          <img src="/assets/images/rg3/front-worn.jpg" alt="TENBJJ Ink Splatter Rash Guard, Front" loading="lazy" class="d3-img active" id="rg3-front">
+          <img src="/assets/images/rg3/back-worn.jpg" alt="TENBJJ Ink Splatter Rash Guard, Back" loading="lazy" class="d3-img" id="rg3-back">
+          <span class="product-badge product-badge-new">New</span>
+          <div class="d3-toggle" aria-label="Toggle front/back view">
+            <button class="d3-toggle-btn active" onclick="imgToggle('rg3',['front','back'],'front')" data-view="front">Front</button>
+            <button class="d3-toggle-btn" onclick="imgToggle('rg3',['front','back'],'back')" data-view="back">Back</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Rash Guards</p>
+          <h3 class="product-name">Ink Splatter Rash Guard</h3>
+          <p class="product-desc">All-over print recycled short sleeve rash guard. Split oni face front with black vertical panels and red accents. Ink splatter back. UPF 40+.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-rg3">$37.50</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="2XS" data-price="37.50" onclick="selectSize(this,'rg3')">2XS</button>
+              <button class="size-pill" data-size="XS"  data-price="37.50" onclick="selectSize(this,'rg3')">XS</button>
+              <button class="size-pill" data-size="S"   data-price="37.50" onclick="selectSize(this,'rg3')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="37.50" onclick="selectSize(this,'rg3')">M</button>
+              <button class="size-pill" data-size="L"   data-price="37.50" onclick="selectSize(this,'rg3')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="37.50" onclick="selectSize(this,'rg3')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="39.00" onclick="selectSize(this,'rg3')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="41.50" onclick="selectSize(this,'rg3')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="43.50" onclick="selectSize(this,'rg3')">4XL</button>
+              <button class="size-pill" data-size="5XL" data-price="45.50" onclick="selectSize(this,'rg3')">5XL</button>
+              <button class="size-pill" data-size="6XL" data-price="47.50" onclick="selectSize(this,'rg3')">6XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('rg3', this)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- RG4 — Oni Face Rash Guard -->
+      <article class="product-card fade-up new-drop-card" data-product="rg4" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="rg4-wrap">
+          <img src="/assets/images/rg4/front-worn.jpg" alt="TENBJJ Oni Face Rash Guard, Front" loading="lazy" class="d3-img active" id="rg4-front">
+          <img src="/assets/images/rg4/back-worn.jpg" alt="TENBJJ Oni Face Rash Guard, Back" loading="lazy" class="d3-img" id="rg4-back">
+          <span class="product-badge product-badge-new">New</span>
+          <div class="d3-toggle" aria-label="Toggle front/back view">
+            <button class="d3-toggle-btn active" onclick="imgToggle('rg4',['front','back'],'front')" data-view="front">Front</button>
+            <button class="d3-toggle-btn" onclick="imgToggle('rg4',['front','back'],'back')" data-view="back">Back</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Rash Guards</p>
+          <h3 class="product-name">Oni Face Rash Guard</h3>
+          <p class="product-desc">All-over print recycled short sleeve rash guard. Full-coverage screaming oni face with red eyes and fangs on front. Ink splatter back. UPF 40+.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-rg4">$37.00</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="2XS" data-price="37.00" onclick="selectSize(this,'rg4')">2XS</button>
+              <button class="size-pill" data-size="XS"  data-price="37.00" onclick="selectSize(this,'rg4')">XS</button>
+              <button class="size-pill" data-size="S"   data-price="37.00" onclick="selectSize(this,'rg4')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="37.00" onclick="selectSize(this,'rg4')">M</button>
+              <button class="size-pill" data-size="L"   data-price="37.00" onclick="selectSize(this,'rg4')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="37.00" onclick="selectSize(this,'rg4')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="39.50" onclick="selectSize(this,'rg4')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="41.50" onclick="selectSize(this,'rg4')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="43.50" onclick="selectSize(this,'rg4')">4XL</button>
+              <button class="size-pill" data-size="5XL" data-price="45.00" onclick="selectSize(this,'rg4')">5XL</button>
+              <button class="size-pill" data-size="6XL" data-price="47.00" onclick="selectSize(this,'rg4')">6XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('rg4', this)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- RG5 — Dual Demon Rash Guard -->
+      <article class="product-card fade-up new-drop-card" data-product="rg5" data-selected-size="M">
+        <div class="product-img-wrap d3-img-wrap" id="rg5-wrap">
+          <img src="/assets/images/rg5/front-worn.jpg" alt="TENBJJ Dual Demon Rash Guard, Front" loading="lazy" class="d3-img active" id="rg5-front">
+          <img src="/assets/images/rg5/back-worn.jpg" alt="TENBJJ Dual Demon Rash Guard, Back" loading="lazy" class="d3-img" id="rg5-back">
+          <span class="product-badge product-badge-new">New</span>
+          <div class="d3-toggle" aria-label="Toggle front/back view">
+            <button class="d3-toggle-btn active" onclick="imgToggle('rg5',['front','back'],'front')" data-view="front">Front</button>
+            <button class="d3-toggle-btn" onclick="imgToggle('rg5',['front','back'],'back')" data-view="back">Back</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-cat-label">Rash Guards</p>
+          <h3 class="product-name">Dual Demon Rash Guard</h3>
+          <p class="product-desc">All-over print recycled short sleeve rash guard. Black and red dual oni demons with horns and fangs on front. Ink splatter cross back. TENBJJ sleeve logo. UPF 40+.</p>
+          <div class="product-price-wrap">
+            <span class="product-price" id="price-rg5">$37.50</span>
+          </div>
+          <div class="product-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-pills">
+              <button class="size-pill" data-size="2XS" data-price="37.50" onclick="selectSize(this,'rg5')">2XS</button>
+              <button class="size-pill" data-size="XS"  data-price="37.50" onclick="selectSize(this,'rg5')">XS</button>
+              <button class="size-pill" data-size="S"   data-price="37.50" onclick="selectSize(this,'rg5')">S</button>
+              <button class="size-pill active" data-size="M"   data-price="37.50" onclick="selectSize(this,'rg5')">M</button>
+              <button class="size-pill" data-size="L"   data-price="37.50" onclick="selectSize(this,'rg5')">L</button>
+              <button class="size-pill" data-size="XL"  data-price="37.50" onclick="selectSize(this,'rg5')">XL</button>
+              <button class="size-pill" data-size="2XL" data-price="39.00" onclick="selectSize(this,'rg5')">2XL</button>
+              <button class="size-pill" data-size="3XL" data-price="41.50" onclick="selectSize(this,'rg5')">3XL</button>
+              <button class="size-pill" data-size="4XL" data-price="43.50" onclick="selectSize(this,'rg5')">4XL</button>
+              <button class="size-pill" data-size="5XL" data-price="45.50" onclick="selectSize(this,'rg5')">5XL</button>
+              <button class="size-pill" data-size="6XL" data-price="47.50" onclick="selectSize(this,'rg5')">6XL</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn new-drop-btn" onclick="addToCart('rg5', this)">Add to Cart</button>
         </div>
       </article>
 
@@ -575,10 +876,18 @@
 
   // Product catalog (mirrors worker.js — name + thumb for cart display)
   const CATALOG = {
-    d1: { name: 'Crimson Oni Tee',     thumb: '/assets/images/d1/back-flat.jpg' },
-    d2: { name: 'Oni Scroll Tee',      thumb: '/assets/images/d2/back-worn.jpg' },
-    d3: { name: 'Oni Mech Tee',        thumb: '/assets/images/d3/back-flat.jpg' },
-    d4: { name: 'Samurai Blossom Tee', thumb: '/assets/images/d4/back-flat.jpg' },
+    d1: { name: 'Crimson Oni Tee',        thumb: '/assets/images/d1/back-flat.jpg' },
+    d2: { name: 'Oni Scroll Tee',         thumb: '/assets/images/d2/back-worn.jpg' },
+    d3: { name: 'Oni Mech Tee',           thumb: '/assets/images/d3/back-flat.jpg' },
+    d4: { name: 'Samurai Blossom Tee',    thumb: '/assets/images/d4/back-flat.jpg' },
+    ns1: { name: 'Oni Flame Tee',         thumb: '/assets/images/ns1/back-worn.jpg' },
+    ns2: { name: 'Dual Oni Tee',         thumb: '/assets/images/ns2/back-worn.jpg' },
+    ns3: { name: 'Oni Blossom Tee',       thumb: '/assets/images/ns3/back-worn.jpg' },
+    rg1: { name: 'Oni Shadow Rash Guard', thumb: '/assets/images/rg1/front-worn.jpg' },
+    rg2: { name: 'Oni Demon Rash Guard',  thumb: '/assets/images/rg2/front-flat.png' },
+    rg3: { name: 'Ink Splatter Rash Guard', thumb: '/assets/images/rg3/front-worn.jpg' },
+    rg4: { name: 'Oni Face Rash Guard',     thumb: '/assets/images/rg4/front-worn.jpg' },
+    rg5: { name: 'Dual Demon Rash Guard',   thumb: '/assets/images/rg5/front-worn.jpg' },
   };
 
   /* ── Cart state (localStorage) ──────────────────────── */
@@ -794,50 +1103,49 @@
     }
   }
 
-  // Init badge on page load
-  updateBadge();
-
-  /* ── Drop countdown (July 15, 2025 midnight ET) ─────── */
-  const DROP_END = new Date('2026-07-15T04:00:00Z'); // midnight ET = 04:00 UTC
-
-  function pad(n) { return String(n).padStart(2, '0'); }
-
-  function tickCountdown() {
-    const now  = new Date();
-    const diff = DROP_END - now;
-
-    if (diff <= 0) {
-      // Drop has ended — disable all buy buttons, update bar
-      document.getElementById('urgency-bar').classList.add('urgency-expired');
-      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-        btn.disabled = true;
-        btn.textContent = 'Collection Closed';
-        btn.classList.add('expired');
-      });
-      document.getElementById('countdown').innerHTML =
-        '<span class="urgency-expired-msg">This drop has closed.</span>';
-      return; // stop ticking
-    }
-
-    const days  = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins  = Math.floor((diff % 3600000)  / 60000);
-    const secs  = Math.floor((diff % 60000)    / 1000);
-
-    document.getElementById('cd-days').textContent  = days;
-    document.getElementById('cd-hours').textContent = pad(hours);
-    document.getElementById('cd-mins').textContent  = pad(mins);
-    document.getElementById('cd-secs').textContent  = pad(secs);
-
-    // Flash red when under 24 hours
-    if (diff < 86400000) {
-      document.getElementById('urgency-bar').classList.add('urgency-critical');
-    }
-
-    setTimeout(tickCountdown, 1000);
+  /* ── Category filter ────────────────────────────────── */
+  function filterCat(btn) {
+    document.querySelectorAll('.cat-filter .cat-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    const shirtSection  = document.getElementById('grid-shirts');
+    const rgSection     = document.getElementById('grid-rg');
+    const labelShirts   = document.getElementById('label-shirts');
+    const labelRg       = document.getElementById('label-rg');
+    const showShirts = cat === 'all' || cat === 'shirts';
+    const showRg     = cat === 'all' || cat === 'rg';
+    shirtSection.style.display  = showShirts ? '' : 'none';
+    labelShirts.style.display   = showShirts ? '' : 'none';
+    rgSection.style.display     = showRg ? '' : 'none';
+    labelRg.style.display       = showRg ? '' : 'none';
+    if (cat !== 'all') document.getElementById('shop').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  tickCountdown();
+  /* ── New drop countdown ──────────────────────────────── */
+  const NEW_DROP_END = new Date('2026-07-20T04:00:00Z');
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tickNewDrop() {
+    const diff = NEW_DROP_END - new Date();
+    if (diff <= 0) {
+      document.getElementById('new-drop-bar').classList.add('urgency-expired');
+      document.querySelectorAll('.new-drop-btn').forEach(btn => {
+        btn.disabled = true; btn.textContent = 'Drop Ended'; btn.classList.add('expired');
+      });
+      document.getElementById('new-drop-countdown').innerHTML =
+        '<span class="urgency-expired-msg">This drop has ended.</span>';
+      return;
+    }
+    document.getElementById('nd-days').textContent  = Math.floor(diff / 86400000);
+    document.getElementById('nd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    document.getElementById('nd-mins').textContent  = pad(Math.floor((diff % 3600000)  / 60000));
+    document.getElementById('nd-secs').textContent  = pad(Math.floor((diff % 60000)    / 1000));
+    if (diff < 86400000) document.getElementById('new-drop-bar').classList.add('urgency-critical');
+    setTimeout(tickNewDrop, 1000);
+  }
+  tickNewDrop();
+
+  // Init badge on page load
+  updateBadge();
   </script>
 </body>
 </html>
