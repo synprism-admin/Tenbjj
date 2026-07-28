@@ -15,6 +15,10 @@
     gtag('js', new Date());
     gtag('config', 'G-LNB2J9VBPS');
   </script>
+  <script>
+    // Clear cart on successful purchase — runs before page renders
+    try { localStorage.removeItem('tenbjj_cart'); } catch(e) {}
+  </script>
   <style>
     .success-wrap {
       min-height: 100vh;
